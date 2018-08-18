@@ -12,15 +12,28 @@ call vundle#begin()
     Plugin 'glsl.vim'
     Plugin 'Yggdroot/indentLine'
     Plugin 'vim-airline/vim-airline'
-    Plugin 'w0rp/ale'
+"    Plugin 'w0rp/ale'
     Plugin 'pangloss/vim-javascript'
     Plugin 'mxw/vim-jsx'
     Plugin 'flazz/vim-colorschemes'
+    Plugin 'slashmili/alchemist.vim'
+    Plugin 'elixir-editors/vim-elixir'
+    Plugin 'valloric/YouCompleteMe'
+    Plugin 'OmniSharp/omnisharp-vim'
 call vundle#end()
 
 filetype plugin indent on
 
 nnoremap ; :
+
+if has('gui_running')
+    set guioptions-=m
+    set guioptions-=T
+    set guioptions-=r
+    set guioptions-=l
+    set guioptions-=R
+    set guifont=Inconsolata\ 12
+endif
 
 set ts=4
 set sw=4
@@ -35,4 +48,5 @@ syntax on
 
 au BufNewFile,BufRead *.vs,*.fs set ft=glsl
 
-color cobalt2
+"color cobalt2
+color luna
