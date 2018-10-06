@@ -32,7 +32,8 @@ if has('gui_running')
     set guioptions-=r
     set guioptions-=l
     set guioptions-=R
-    set guifont=Inconsolata\ 12
+    set guioptions-=L
+    set guifont=FuraCode\ Nerd\ Font\ 9
 endif
 
 set ts=4
