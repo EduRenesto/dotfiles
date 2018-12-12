@@ -166,18 +166,29 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        i3bar_command ~/bin/bar.js
+    i3bar_command ~/bin/bar.js
 }
 
-gaps inner 10
-gaps outer 20
+gaps inner 5
+gaps outer 10
 
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 0
 new_window 1pixel
 
-client.focused	#2E5573	#0E1519 #A6ADC0 #2E5573 #2E5563
-client.focused-inactive #0E1519 #0E1519 #A6ADC0 #0E1519 #2E556e
-client.unfocused #0E1519 #0E1519 #A6ADC0 #0E1519 #2E556e
+# client.focused	#2E5573	#0E1519 #A6ADC0 #2E5573 #2E5563
+# client.focused-inactive #0E1519 #0E1519 #A6ADC0 #0E1519 #2E556e
+# client.unfocused #0E1519 #0E1519 #A6ADC0 #0E1519 #2E556e
+
+set_from_resource $fg i3wm.foreground #98a8bd
+set_from_resource $bg i3wm.background #0b0b0c
+
+client.focused          $bg $bg $fg $bg $bg
+client.focused_inactive $bg $bg $fg $bg $bg
+client.unfocused        $bg $bg $fg $bg $bg
+client.urgent           $bg $bg $fg $bg $bg
+client.placeholder      $bg $bg $fg $bg $bg
+
+client.background $bg
 
 bindsym Print exec --no-startup-id /home/edu/bin/screenshot.sh
 bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5
@@ -185,5 +196,5 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 5
 bindsym XF86AudioMute exec --no-startup-id pamixer -t
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 
-exec --no-startup-id wal -i /home/edu/wallpapers/ygzg317syilx.png 
-exec --no-startup-id compton --vsync opengl --backend glx
+exec --no-startup-id wal -i /home/edu/wallpapers/yNWu8K4.jpg -a "85"
+exec --no-startup-id compton

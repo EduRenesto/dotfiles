@@ -22,6 +22,9 @@ call vundle#begin()
     Plugin 'OmniSharp/omnisharp-vim'
     Plugin 'purescript-contrib/purescript-vim'
     Plugin 'terryma/vim-multiple-cursors'
+    Plugin 'dylanaraps/wal.vim'
+    Plugin 'PotatoesMaster/i3-vim-syntax'
+    Plugin 'junegunn/goyo.vim'
 call vundle#end()
 
 filetype plugin indent on

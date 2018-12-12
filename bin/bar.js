@@ -11,8 +11,9 @@ if(!fs.existsSync(COLORS_FILE)) {
 }
 
 const COLORS = JSON.parse(fs.readFileSync(COLORS_FILE, "utf8"));
-const LEMONBAR_ARGS = ["-g", "x25", "-f", "FuraCode Nerd Font:size=10", "-B", COLORS.special.background,
-                        "-F", COLORS.special.foreground];
+const LEMONBAR_ARGS = ["-g", "x25", "-f", "Overpass:size=10", 
+    "-f", "Noto Color Emoji:size=10",
+    "-B", COLORS.special.background, "-F", COLORS.special.foreground];
 
 const lemonbar = child_process.spawn("lemonbar", LEMONBAR_ARGS);
 
@@ -49,25 +50,6 @@ const getWorkspaces = () => {
     return JSON.parse(child_process.spawnSync("i3-msg", ["-t", "get_workspaces"]).stdout.toString());
 }
 
-const getBattery = () => {
-    const status = fs.readFileSync("/sys/class/power_supply/BAT0/status");
-    const total = fs.readFileSync("/sys/class/power_supply/BAT0/charge_full");
-    const now = fs.readFileSync("/sys/class/power_supply/BAT0/charge_now");
-
-    const percent = (parseFloat(now)/parseFloat(total)) * 100;
-
-    return {
-        discharging: status.toString() == "Discharging\n",
-        percent: percent
-    };
-}
-
-const buildBattery = () => {
-    const bat = getBattery();
-
-    return (bat.discharging? "-" : "") + Math.round(bat.percent).toString() + "%";
-}
-
 const build = (text, align, fg, bg) => {
     let ret = "";
     if(align) {
@@ -82,7 +64,7 @@ const build = (text, align, fg, bg) => {
         ret += `%{F${fg}}`;
     }
 
-    return ret + text;
+    return ret + text;;
 }
 
 const update = () => {
@@ -99,8 +81,7 @@ const update = () => {
     const center = build(song.artist, undefined, COLORS.colors.color5)
                 + build(" - ", undefined, COLORS.special.foreground)
                 + build(song.title, undefined, COLORS.colors.color5);
-    const right = build(date.date + " " + date.time, undefined, COLORS.colors.color5)
-                + build(" " + buildBattery(), undefined, COLORS.colors.color5) + " ";
+    const right = build(date.date + " " + date.time, undefined, COLORS.colors.color5) + " ";
 
     lemonbar.stdin.write(build(left, "l") + build(center, "c") + build(right, "r"));
 
