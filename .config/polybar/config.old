@@ -27,22 +27,16 @@
 ;secondary = #d5c4a1
 ;alert = #fe8019
 ;blue = #83a598
-; New colors!!
-background = #282828
-background-alt = #3c3836
-foreground = #ebdbb2
-foreground-alt = #555
-primary = #fbf1c7
-secondary = #d5c4a1
-alert = #fe8019
-red = #cc241d
-green = #98971a
-yellow = #d79921
+; Nord
+background = #2E3440
+background-alt = #4C566A
+;foreground = ${xrdb:color7:#222}
+foreground = #D8DEE9
+foreground-alt = #ECEFF4
+primary = #88C0D0
+secondary = #5E81AC
+alert = #D08770
 blue = #83a598
-purple = #b16286
-aqua = #689d6a
-gray = #a89984
-orange = #d65d0e
 
 [bar/bar0]
 ;monitor = ${env:MONITOR:HDMI-1}
@@ -65,22 +59,20 @@ border-color = #00000000
 padding-left = 0
 padding-right = 2
 
-;module-margin-left = 1
-;module-margin-right = 2
-module-margin-left = 0
-module-margin-right = 0
+module-margin-left = 1
+module-margin-right = 2
 
-font-0 = Overpass:size=10;
-font-1 = Fura Code Nerd Font:size=14:weight=bold:antialias=false;3
-font-2 = FontAwesome:size=8:antialias=true;
+font-0 = Overpass:pixelsize=10;
+font-1 = Font Awesome 5 Free:pixelsize=10
+font-2 = Noto Sans:pixelsize=10;1
 
-modules-left = s l sbg bspwm sbg r
-modules-center = l sbg spotify sbg r
-modules-right = l sbg pulseaudio sbg r l sbg memory sbg r l sbg cpu sbg r l sbg date sbg r 
+modules-left = bspwm
+modules-center = spotify
+modules-right = pulseaudio memory cpu date powermenu
 
-tray-position = none
+tray-position = right
 tray-padding = 2
-;tray-background = ${colors.background-alt}
+;tray-background = #0063ff
 
 wm-restack = bspwm
 ;wm-restack = i3
@@ -104,13 +96,12 @@ label = %title:0:30:...%
 type = internal/bspwm
 
 label-focused = %index%
-label-focused-background = ${colors.foreground}
-label-focused-foreground = ${colors.background}
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
 label-occupied = %index%
 label-occupied-padding = 2
-label-occupied-background = ${colors.background-alt}
 
 label-urgent = %index%!
 label-urgent-background = ${colors.alert}
@@ -167,22 +158,21 @@ label-song-ellipsis = true
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
+format-prefix = "CPU "
 format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = ${colors.background-alt}
-format-prefix-background = ${colors.background-alt}
-format-background = ${colors.background-alt}
+;;format-prefix-background = ${colors.background-alt}
+;format-background = ${colors.background-alt}
 label = %percentage:2%%
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
-format-prefix-font = 2
+format-prefix = "RAM "
 ;format-prefix-background = ${colors.background-alt}
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #4bffdc
-format-background = ${colors.background-alt}
+;format-background = ${colors.background-alt}
 label = %percentage_used%%
 
 format-disconnected =
@@ -201,23 +191,21 @@ date-alt = " %Y-%m-%d"
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix ="  "
+format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #0a6cf5
 
 label = %date% %time%
-format-background = ${colors.background-alt}
+;format-background = ${colors.background-alt}
 
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-prefix = aaa
-format-volume = " <label-volume>"
-format-volume-background = ${colors.background-alt}
-format-volume-foreground = ${colors.foreground-alt}
+format-volume = <label-volume>
+;format-volume-background = ${colors.background-alt}
 
 label-volume = %percentage%%
-label-volume-foreground = ${colors.foreground}
+label-volume-foreground = ${root.foreground}
 
 label-muted = muted
 label-muted-foreground = ${colors.alert}
@@ -267,38 +255,8 @@ margin-bottom = 0
 type = custom/script
 exec = perl /home/edu/bin/polybar/spotify.pl '{artist} - {title}'
 tail = true
-label =  %output%
+label = %output%
 interval = 5
-format-background = ${colors.background-alt}
-format-padding = 2
-
-[module/vol_sign]
-type = custom/text
-
-content = "" 
-
-[module/l]
-type = custom/text
-
-content = ""
-content-foreground = ${colors.background-alt}
-
-content-padding = 0
-
-[module/r]
-type = custom/text
-
-content = ""
-content-foreground = ${colors.background}
-content-background = ${colors.background-alt}
-
-[module/s]
-type = custom/text
-content = " "
-
-[module/sbg]
-type = custom/text
-content = " "
-content-background = ${colors.background-alt}
+;format-background = ${colors.background-alt}
 
 ; vim:ft=dosini
