@@ -1,0 +1,12 @@
+[General]
+Binary = calcurse
+Hostname = rouxinolio:5232
+Path = /edu/37c00f3c-724d-4054-ba88-af49d078190a
+AuthMethod = basic
+InsecureSSL = Yes
+HTTPS = No
+Verbose = Yes
+DryRun = No
+
+[Auth]
+Username = edu
